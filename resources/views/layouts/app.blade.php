@@ -27,6 +27,8 @@
             <li class="p-3">
                 <a href="">{{auth()->user()->username}}</a>
             </li>
+
+        <!--  -->
             
             <li class="p-3">
                 <a href="/logout">Logout</a>
