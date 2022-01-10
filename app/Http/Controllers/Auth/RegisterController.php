@@ -16,7 +16,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
-         
+         //validation
         $this->validate($request,[
             'name'=>'required|string|max:100',
             'username'=>'required|string|max:100|unique:users',
@@ -24,6 +24,7 @@ class RegisterController extends Controller
             'password'=>'required|string|min:6|confirmed'
         ]);
 
+        //inserting in database
         User::create([
             'name'=>$request->name,
             'username'=>$request->username,
@@ -31,18 +32,11 @@ class RegisterController extends Controller
             'password'=>Hash::make($request->password)
         ]);
 
+        //login the user
+        //auth()->attempt($request->only('username','password'));
 
-
-
-
-
-
-
-
-
-
-
-
+        //redirect to dashboard
+        return redirect("/login");
 
 
     }
