@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,12 @@ use App\Http\Controllers\LogoutController;
 |
 */
 Route::get("/",[DashboardController::class,"index"]);
-Route::get('/posts', function () {
-    return view('posts.index');
-});
+
+
+Route::get('/posts', [ PostController::class,"index"]);
+Route::post('/posts', [ PostController::class,"store"]);
+
+
 Route::get('/register', [ RegisterController::class,"index"]);
 Route::post('/register', [ RegisterController::class,"store"]);
 
